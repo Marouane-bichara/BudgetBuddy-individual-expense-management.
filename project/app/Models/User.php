@@ -52,4 +52,10 @@ class User extends Authenticatable
     public function expenses(){
         return $this->hasMany(Expenses::class);
     }
+
+
+    public function groupes()
+    {
+        return $this->belongsToMany(Groups::class, 'group_user', 'user_id', 'group_id');
+    }
 }
