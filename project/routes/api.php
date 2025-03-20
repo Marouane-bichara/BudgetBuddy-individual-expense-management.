@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\ExpensesController;
 
@@ -33,4 +34,5 @@ Route::get('login', [AuthController::class , 'login']);
 Route::middleware(['auth:sanctum','checkAdmin'])->apiResource('tags', TagsController::class);
 
 Route::middleware('auth:sanctum' , 'checkAdmin')->apiResource('expenses', ExpensesController::class);
+Route::middleware('auth:sanctum' , 'checkAdmin')->apiResource('groupe', GroupsController::class);
 
