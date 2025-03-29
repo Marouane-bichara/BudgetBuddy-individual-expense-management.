@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleIdToUsersTable extends Migration
+class AddSplitTypeToExpenses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddRoleIdToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('expenses', function (Blueprint $table) {
             //
-            $table->foreignId('role_id')->nullable()->constrained('role')->onDelete('set null');
+            $table->string('split_type')->nullable(); // "equal" or "custom"
+
         });
     }
 
@@ -26,10 +27,10 @@ class AddRoleIdToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->dropForeign(['role_id']);
-            $table->dropColumn('role_id'); 
+        Schema::table('expenses', function (Blueprint $table) {
+            //  
+
+            $table->dropColumn('split_type');
         });
     }
 }

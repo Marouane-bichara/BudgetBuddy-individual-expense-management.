@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\GroupsController;
+use App\Http\Controllers\balanceController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\ExpensesController;
 
@@ -36,3 +37,6 @@ Route::middleware(['auth:sanctum','checkAdmin'])->apiResource('tags', TagsContro
 Route::middleware('auth:sanctum' , 'checkAdmin')->apiResource('expenses', ExpensesController::class);
 Route::middleware('auth:sanctum' , 'checkAdmin')->apiResource('groupe', GroupsController::class);
 
+
+
+Route::get('/balances/{groupId}', [BalanceController::class, 'calculate'])->middleware('auth:sanctum');

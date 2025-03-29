@@ -34,6 +34,8 @@ class ExpensesController extends Controller
         $validate = $request->validate([
             'amount' => 'required|numeric',
             'description' => 'required|string|max:255',
+            'group_id' => 'nullable|numeric',
+            'split_type' => 'nullable|string|in:equal,custom',
             'tags' => 'required|array',
         ]);
     
@@ -95,6 +97,8 @@ class ExpensesController extends Controller
     $validate = $request->validate([
         'amount' => 'sometimes|numeric',
         'description' => 'sometimes|string|max:255',
+        'group_id' => 'sometimes|numeric',
+        'split_type' => 'sometimes|string|in:equal,custom',
         'tags' => 'sometimes|array',
     ]);
 

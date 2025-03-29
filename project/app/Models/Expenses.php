@@ -13,7 +13,9 @@ class Expenses extends Model
         'user_id',
         'amount',
         'description',
-        'date'
+        'date',
+        'group_id',
+        'split_type',
     ];
 
     public function user()
